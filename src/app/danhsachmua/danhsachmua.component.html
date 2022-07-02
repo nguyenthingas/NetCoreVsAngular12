@@ -1,0 +1,57 @@
+<section id="cart_items">
+  <div class="container">
+       <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                 <li><a href="/">Home</a></li>
+                 <li class="active">Danh sách đã mua</li>
+            </ol>
+       </div>
+       <div class="table-responsive cart_info" style="margin-top: -40px" id="myCart">
+            <table class="table table-condensed">
+                 <thead>
+                      <tr class="cart_menu">
+                           <th class="image align-center" colspan="2">Sản phẩm</th>
+                           <th class="price">Giá</th>
+                           <th class="dateorder">Ngày mua</th>
+                           <th>Đánh giá</th>
+                      </tr>
+                 </thead>
+                 <tbody>
+                      <tr *ngFor="let item of MyOrders">
+                           <td>
+                                <a href=""><img src="{{PrdImgPath}}/{{item.IMAGE}}" alt=""
+                                          style="height: 77px; width: 77px;"></a>
+                           </td>
+                           <td class="cart_description">
+                                <h4><a>{{item.TenSanPham}}</a></h4>
+                           </td>
+                           <td class="cart_price">
+                                <h4><a>{{item.GiaBan | currency: "VND"}}</a></h4>
+                           </td>
+                           <td class="cart_description">
+                                <h4>
+                                     <a>{{item.NgayDat | date:'d/M/yy' }}</a>
+                                </h4>
+                           </td>
+                           <td>
+                                <button class="btn btn-primary btn-vote" *ngIf="item.TrangThaivote">Vote</button>
+                                <button class="btn btn-primary btn-voted" *ngIf="!item.TrangThaivote" style="background: rgb(131, 130, 130);">Voted</button>
+                                <div class="customer-vote">
+                                     <div class="form-group">
+                                          <label style="color: #fff;" for="ratepoint">Điểm số (từ 1 đến 5):</label>
+                                          <input [(ngModel)]="SODIEM" style="width: 100%;" type="range" id="ratepoint" name="vol" min="1" max="5">
+                                     </div>
+                                     <div class="form-group" style="margin-top: -10px">
+                                          <label style="color: #fff;" for="comment">Bình luận</label>
+                                          <textarea [(ngModel)]="BINHLUAN" name="BINHLUAN" id="comment" cols="5" rows="5" placeholder="Đánh giá của bạn về sản phẩm..."></textarea>
+                                     </div>
+                                     <button class="btn btn-primary col-md-6 pr-3" (click)="btnExitVoted()" style="margin-top: -10px">Hủy</button>
+                                     <button class="btn btn-primary col-md-6 pl-3" (click)="btnVoted(item.MASP)" style="margin-top: -10px">Xong</button>
+                                </div>
+                           </td>
+                      </tr>
+                 </tbody>
+            </table>
+       </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đông Hê Store</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> <!--linh dẫn đến fontawesome để lấy đường dẫn các icon-->
+</head>
+<body>
+  <app-root></app-root>
+
+  <!-- Js Plugins -->
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/jquery.nice-select.min.js"></script>
+  <script src="./assets/js/jquery-ui.min.js"></script>
+  <script src="./assets/js/jquery.slicknav.js"></script>
+  <script src="./assets/js/mixitup.min.js"></script>
+  <script src="./assets/js/owl.carousel.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+  	<script>
+		function initialize() {
+			var mapOptions = {
+				zoom: 8,
+				scrollwheel: false,
+				center: new google.maps.LatLng(35.149868, -90.046678)
+			};
+			var map = new google.maps.Map(document.getElementById('googleMap'),
+				mapOptions);
+			var marker = new google.maps.Marker({
+				position: map.getCenter(),
+				map: map
+			});
+
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+
+		function refreshInputer() {
+			$(':input')
+				.not(':button, :submit, :reset, :hidden')
+				.val('')
+				.prop('checked', false)
+				.prop('selected', false);
+
+			$("#fullname").focus();
+		}
+
+		function payNow() {
+			document.getElementById("canPay").style.display = "block";
+			document.getElementById('focusItem').focus();
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.customer-vote{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.534);
+    width: 200px;
+    border-radius: 8px;
+    padding: 10px 10px;
+    display: none;
+    right: 42%;
+    top: 25%;
+    z-index: 1000;
+}

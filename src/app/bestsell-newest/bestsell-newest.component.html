@@ -1,0 +1,96 @@
+  <!-- Blog Section Begin -->
+  <section class="blog spad" style="padding-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Loại tin</h4>
+                        <ul *ngFor="let item of loaitintuc">
+                            <li><a routerLink="/tintuc/{{item.LoaiTinID}}">{{item.TENLOAITIN}}</a></li>                          
+                        </ul>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Tin tức mới</h4>
+                        <div class="blog__sidebar__recent">
+                            <a href="#" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="img/blog/sidebar/8-cach-giat-giay-Converse43.jpeg" alt="">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
+                                    <span>MAR 05, 2019</span>
+                                </div>
+                            </a>
+                            <a href="#" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="img/blog/sidebar/Lam-cach-nao-de-pha-vo-doi-vans-cua-ban-5.jpg" alt="">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
+                                    <span>MAR 05, 2019</span>
+                                </div>
+                            </a>
+                            <a href="#" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="img/blog/sidebar/VansDenCaro79.jpg" alt="">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
+                                    <span>MAR 05, 2019</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Search By</h4>
+                        <div class="blog__sidebar__item__tags">
+                            <a href="#">Apple</a>
+                            <a href="#">Beauty</a>
+                            <a href="#">Vegetables</a>
+                            <a href="#">Fruit</a>
+                            <a href="#">Healthy Food</a>
+                            <a href="#">Lifestyle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" *ngFor="let item of listBlogs| paginate : { itemsPerPage: 4, currentPage: page, totalItems: totalLength};">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{photoPath}}{{item.IMAGE}}" alt="" style="height: 228px;">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><a (click)="chitiettintuc(item)" href=""><div [innerHTML]=item.TIEUDE></div></a></h5>
+                                <p [innerHTML]=item.TRICHDAN></p>
+                                <a href="" (click)="chitiettintuc(item)" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>                  
+                    <div class="col-lg-12">
+                        <div >
+                            <pagination-controls  previousLabel="Prev"
+                            nextLabel="Next"
+                            (pageChange)="page = $event" ></pagination-controls>
+                       </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->
+ 

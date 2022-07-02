@@ -1,0 +1,344 @@
+ <!-- Page Preloder -->
+ <div id="preloder">
+  <div class="loader"></div>
+</div>
+
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+  <div class="humberger__menu__logo">
+      <a href="#"><img src="img/logo.png" alt=""></a>
+  </div>
+  <div class="humberger__menu__cart">
+      <ul>
+          <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+          <li><a href="#" [routerLink]="['/giohang']" routerLinkActive="router-link-active" ><i class="fa fa-shopping-bag"></i> <span>{{totalItem}}</span></a></li>
+      </ul>
+      <div class="header__cart__price">item: <span>$150.00</span></div>
+  </div>
+  <div class="humberger__menu__widget">
+      <div class="header__top__right__language">
+          <img src="img/language.png" alt="">
+          <div>English</div>
+          <span class="arrow_carrot-down"></span>
+          <ul>
+              <li><a href="#">Spanis</a></li>
+              <li><a href="#">English</a></li>
+          </ul>
+      </div>
+      <div class="header__top__right__auth">
+          <a href="#"><i class="fa fa-user"></i> Login</a>
+      </div>
+  </div>
+  <nav class="humberger__menu__nav mobile-menu">
+      <ul>
+          <li class="active"><a href="./index.html">Home</a></li>
+          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="#">Pages</a>
+              <ul class="header__menu__dropdown">
+                  <li><a href="./shop-details.html">Shop Details</a></li>
+                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                  <li><a href="./checkout.html">Check Out</a></li>
+                  <li><a href="./blog-details.html">Blog Details</a></li>
+              </ul>
+          </li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+      </ul>
+  </nav>
+  <div id="mobile-menu-wrap"></div>
+  <div class="header__top__right__social">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+  </div>
+  <div class="humberger__menu__contact">
+      <ul>
+          <li><i class="fa fa-envelope"></i> nganguyen@gmail.com</li>
+          <li>Free Shipping for all Order of $99</li>
+      </ul>
+  </div>
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+  <div class="header__top">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 col-md-6">
+                  <div class="header__top__left">
+                      <ul>
+                          <li><i class="fa fa-envelope"></i> nganguyen@gmail.com</li>
+                          <li>Miễn Phí Ship cho Đơn Từ 199K</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                  <div class="header__top__right">
+                      <div class="header__top__right__social">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-linkedin"></i></a>
+                          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                      </div>
+                      <div class="header__top__right__language">
+                          <img src="img/language.png" alt="">
+                          <div>English</div>
+                          <span class="arrow_carrot-down"></span>
+                          <ul>
+                              <li><a href="#">Spanis</a></li>
+                              <li><a href="#">English</a></li>
+                          </ul>
+                      </div>
+                      <div class="header__top__right__auth">
+                          <!-- <a href="#"><i class="fa fa-user"></i> Login</a> -->
+                          <li *ngIf="kh_tenkh == ''">
+                            <button class="btn btn-primary" type="button" data-toggle="modal"
+                                 data-target="#exampleModal" style="margin-top: 5px; margin-right: -10px;">
+                                 <i class="fa fa-lock"></i>
+                                 Đăng nhập
+                            </button>
+                       </li>
+                    
+                       <li *ngIf="kh_tenkh != ''">
+                        <div class="header__top__right__language">
+                            <img src="img/language.png" alt="">
+                            <div>   {{kh_tenkh}}</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a routerLink="/danhsachmua/{{kh_id}}">Danh sách đã mua</a></li>
+                                <li (click)="log_out()"><a routerLink="/">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                      
+                       </li>
+
+                       <!-- Modal login -->
+                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-lhabelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                 <div class="modal-content">
+                                      <div class="modal-header">
+                                           <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
+                                           <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close" style="margin-top: -20px; color: red;">
+                                                <span aria-hidden="true">&times;</span>
+                                           </button>
+                                      </div>
+                                      <div class="modal-body" style="padding-bottom: 0px;">
+                                           <div class="form-group">
+                                                <label for="kh_taikhoan" style="float: left;">Tên đăng nhập</label>
+                                                <input [(ngModel)]="kh_taikhoan" type="text"
+                                                     id="kh_taikhoan" class="form-control"
+                                                     placeholder="User name" aria-describedby="helpUsname"
+                                                     required>
+                                           </div>
+
+                                           <div class="form-group">
+                                                <label for="l_Password" style="float: left;">Mật khẩu</label>
+                                                <input [(ngModel)]="kh_matkhau" type="password"
+                                                     id="l_Password" class="form-control"
+                                                     placeholder="Password" aria-describedby="helpPass"
+                                                     required>
+                                           </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                           <button type="button" class="btn btn-primary"
+                                                data-dismiss="modal" data-toggle="modal"
+                                                data-target="#RegisterModel">Đăng kí</button>
+                                           <button type="button" data-dismiss="modal"
+                                                class="btn btn-primary" (click)="loginNow()">Đăng
+                                                nhập</button>
+                                      </div>
+
+                                 </div>
+                            </div>
+                       </div>
+                       <!-- Modal register -->
+                       <div class="modal fade" id="RegisterModel" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                 <div class="modal-content">
+                                      <div class="modal-header">
+                                           <h5 class="modal-title" id="exampleModalLabel">Đăng kí</h5>
+                                           <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close" style="margin-top: -20px;">
+                                                <span aria-hidden="true">&times;</span>
+                                           </button>
+                                      </div>
+                                      <div class="modal-body" style="padding-bottom: 0px;">
+                                           <!-- Form đăng ký -->
+                                           <div class="form-group">
+                                                <label for="fullname" style="float: left;">Họ và tên</label>
+                                                <input [(ngModel)]="kh_tenkh" type="text" id="fullname"
+                                                     class="form-control" placeholder="Full name" required>
+                                           </div>
+
+                                           <div class="row" style="padding: 0; border: none;">
+                                                <div class="col-md-6"
+                                                     style="padding: 0; padding-right: 8px">
+                                                     <div class="form-group">
+                                                          <label for="phone" style="margin-right: 134px;">Số điện thoại</label>
+                                                          <input [(ngModel)]="kh_sdt" type="tel" id="phone"
+                                                               class="form-control"
+                                                               placeholder="Phone number" required style="width: 212px;
+                                                               margin-left: 16px;">
+                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-6 pl1"
+                                                     style="padding: 0; padding-left: 8px">
+                                                     <div class="form-group">
+                                                          <label for="email" style="float: left;">Email</label>
+                                                          <input [(ngModel)]="kh_email" type="email"
+                                                               id="email" class="form-control"
+                                                               placeholder="Email addess" style="width: 225px;">
+                                                     </div>
+                                                </div>
+                                           </div>
+
+                                           <div class="form-group">
+                                                <label for="Address" style="float: left;">Địa chỉ</label>
+                                                <input [(ngModel)]="kh_diachi" type="text" id="Address"
+                                                     class="form-control" placeholder="Địa chỉ"
+                                                     aria-describedby="helpAddress" required>
+                                                <small id="helpAddress" class="text-muted" style="float: left;">Nơi nhận hàng
+                                                     thường xuyên</small>
+                                           </div>
+
+                                           <div class="form-group">
+                                                <label for="userName" style="margin-right: 367px;">Tên đăng nhập</label>
+                                                <input [(ngModel)]="kh_taikhoan" type="text" id="userName"
+                                                     class="form-control" placeholder="User name"
+                                                     aria-describedby="helpUsname" required>
+                                                <small id="helpUsname" class="text-muted" >Viết liền không
+                                                     dấu, 8-25 kí tự</small>
+                                           </div>
+                                           <div class="row" style="padding: 0; border: none;">
+                                                <div class="col-md-6"
+                                                     style="padding: 0; padding-right: 8px">
+                                                     <div class="form-group">
+                                                          <label for="password">Mật khẩu</label>
+                                                          <input [(ngModel)]="kh_matkhau" type="password"
+                                                               id="password" class="form-control"
+                                                               placeholder="Password"
+                                                               aria-describedby="helpPass" required>
+                                                          <small id="helpPass" class="text-muted">6--8 kí
+                                                               tự, gồm CHỮ HOA, chữ thường, số</small>
+                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 pl1"
+                                                     style="padding: 0; padding-left: 8px">
+                                                     <div class="form-group">
+                                                          <label for="passwordCfm">Xác nhận mật khẩu</label>
+                                                          <input [(ngModel)]="kh_matkhau2" type="password"
+                                                               id="passwordCfm" class="form-control"
+                                                               placeholder="Confirm password" required>
+                                                     </div>
+                                                </div>
+                                           </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary"
+                                                class="btn btn-primary" onclick="refreshInputer()">
+                                                Làm mới dữ liệu
+                                           </button>
+                                           <button (click)="addUser()" type="submit"
+                                                class="btn btn-primary">Đồng ý</button>
+                                      </div>
+                                 </div>
+                            </div>
+                       </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3">
+              <div class="header__logo">
+                  <a href="./index.html"><img src="./assets/img/logo1.png" alt=""></a>
+              </div>
+          </div>
+          <div class="col-lg-6">
+              <nav class="header__menu">
+                  <ul>
+                      <li class="active"><a href="./index.html">Trang chủ</a></li>
+                      <li><a href="./shop-grid.html">Giới thiệu</a></li>
+                      <!-- <li><a href="#">Pages</a>
+                          <ul class="header__menu__dropdown">
+                              <li><a href="./shop-details.html">Shop Details</a></li>
+                              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                              <li><a href="./checkout.html">Check Out</a></li>
+                              <li><a href="./blog-details.html">Blog Details</a></li>
+                          </ul>
+                      </li> -->
+                      <li><a href="tintuc">Tin Tức</a></li>
+                      <li><a href="lienhe">Liên Hệ</a></li>
+                  </ul>
+              </nav>
+          </div>
+          <div class="col-lg-3">
+              <div class="header__cart">
+                  <ul>
+                      <li><a href="#"><i class="fa fa-heart"></i> <span>{{totalItem}}</span></a></li>
+                      <li><a routerLink="/cart" routerLinkActive="router-link-active" ><i class="fa fa-shopping-bag"></i> <span>{{totalItem}}</span></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="humberger__open">
+          <i class="fa fa-bars"></i>
+      </div>
+  </div>
+</header>
+<!-- Header Section End -->
+
+<!-- Hero Section Begin -->
+<section class="hero">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3">
+              <div class="hero__categories">
+                  <div class="hero__categories__all">
+                      <span>Danh mục sản phẩm</span>
+                  </div>
+                  <ul>
+                      <li *ngFor="let item of dsLoaiSP"><a (click)="locSP(item.IDLOAI)">{{item.TENLOAI}}</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-lg-9">
+              <div class="hero__search">
+                  <div class="hero__search__form">
+                      <form action="#">
+                          <div class="hero__search__categories">
+                              Danh mục sản phẩm
+                              <span class="arrow_carrot-down"></span>
+                          </div>
+                          <input (keypress)="keyPress($event)" [(ngModel)]="keyword" type="text" placeholder="Nhập thứ bạn cần tìm?" name="s">
+                          <button type="submit" class="site-btn" name="s">SEARCH</button>
+                      </form>
+                  </div>
+                  <div class="hero__search__phone">
+                      <div class="hero__search__phone__icon">
+                          <i class="fa fa-phone"></i>
+                      </div>
+                      <div class="hero__search__phone__text">
+                          <h5>+0969361891</h5>
+                          <span>Hoạt động 24/7</span>
+                      </div>
+                  </div>
+              </div>
+              <app-slide></app-slide>
+
+
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Hero Section End -->

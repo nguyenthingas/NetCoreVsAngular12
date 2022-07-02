@@ -1,0 +1,116 @@
+<section class="shoping-cart spad" style="margin-top: -85px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Sản phẩm</th>
+                                <th>giá</th>
+                                <th>số lượng</th>
+                                <th>thành tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of products">
+                                <td class="shoping__cart__item">
+                                    <img style="height: 100px;" src="{{prdPhotoPath}}{{item.IMAGE}}" alt="">
+                                    <h5>{{item.TENSP}}</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    {{item.GIABAN | currency : 'vnd ' : 'symbol' : '1.0-0' }}
+                                </td>
+                                <td class="shoping__cart__quantity">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <span class="dec qtybtn" (click)="updateProduct(item.SanPhamID,item.Quantity-1)">-</span>
+                                            <input type="text" value="{{item.Quantity}}">
+                                            <span class="inc qtybtn" (click)="updateProduct(item.SanPhamID,item.Quantity+1)">+</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="shoping__cart__total">
+                                    <!-- {{item.totalMoney | currency : 'vnd ' : 'symbol' : '1.0-0' }} -->
+                                    {{item.GIABAN * item.Quantity | currency : 'vnd ' : 'symbol' : '1.0-0'}}
+                                </td>
+                                <td class="shoping__cart__item__close">
+                                    <span class="icon_close" (click)="deleteProduct(item.SanPhamID)"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="shoping__continue">
+                    <div class="shoping__discount">
+                        <h5>Mã giảm giá</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your coupon code">
+                            <button type="submit" class="site-btn">Áp dụng</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Tổng tiền</h5>
+                    <ul>
+                        <li>Phải trả: <span>{{totalMoney | currency : 'vnd ' : 'symbol' : '1.0-0' }}</span></li>
+                    </ul>
+                    <a onclick="payNow()" href="#" class="primary-btn">Thanh toán</a>
+                </div>
+            </div>
+            <div class="row" *ngIf="products.length == 0" >
+                <h4 class="align-center float-left col-md-12" style="margin-left: 458px;padding-top: 26px;color:red;padding-bottom: 15px;">Giỏ hàng của bạn rỗng</h4>
+                <a class="btn btn-primary" routerLink="/" style="margin-left: 507px;">Tiếp tục mua hàng</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="shopper-informations" id="canPay">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="shopper-info">
+				<p>Nhập thông tin giao hàng</p>
+                <div class="form-group">
+                    <label for="fullname">Họ tên người nhận</label>
+                    <input [(ngModel)]="FullName" type="text" name="fullname" id="fullname" placeholder="Full name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Số điện thoại</label>
+                    <input placeholder="Số điện thoại" name="phonenumber" [(ngModel)]="Phone" class="form-control" id="phonenumber">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Địa chỉ</label>
+                    <input type="text" id="Address" placeholder="Địa chỉ giao hàng" name="Address" [(ngModel)]="Address" class="form-control">
+                </div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label for="payment">Tiền mặt
+								<input type="radio" name="pttt" id="payment" checked>
+							</label>
+						</div>
+						<div class="form-group col-md-6" title="Hiện chúng tôi chưa hỗ trợ thanh toán qua TKNH">
+							<label for="payment1">Tài khoản ngân hàng
+								<input type="radio" name="pttt" id="payment1" disabled="disabled">
+							</label>
+						</div>
+						<button class="col-md-12 btn btn-primary align-center" (click)="letOrder()">
+							Hoàn tất
+						</button>
+					</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+            <div class="form-group">
+                <label for="notes">Ghi chú</label>
+                <textarea id="focusItem" name="notes" class="form-control" [(ngModel)]="Notes" placeholder="Lưu ý với của hàng" cols="70" rows="13"></textarea>
+            </div>
+		</div>
+	</div>
+</div>
